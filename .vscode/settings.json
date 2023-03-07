@@ -1,0 +1,4 @@
+{
+  "editor.guides.bracketPairs": "active",
+  "scss.lint.unknownAtRules": "ignore"
+}
