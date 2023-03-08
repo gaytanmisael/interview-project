@@ -12,6 +12,7 @@ import { LoginRouting } from "./login.routing";
     FormsModule,
     ReactiveFormsModule,
     LoginRouting
-  ]
+  ],
+  providers: []
 })
 export class LoginModule {}

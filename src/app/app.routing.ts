@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { InitLayoutComponent } from '@containers/init';
 
-const routes = [
+const routes: Routes = [
   {
     path: '', component: InitLayoutComponent,
     children: [
@@ -12,7 +12,7 @@ const routes = [
       { path: 'register', loadChildren: () => import('@views/init/register/register.module').then(m => m.RegisterModule) }
     ]
   }
-] satisfies Routes;
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

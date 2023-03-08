@@ -10,23 +10,23 @@ import { ErrorInterceptor } from '@interceptor/error.interceptor';
 
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
-import { AlertComponent } from '@components/alert/alert.component';
 
 import { InitLayoutComponent } from '@containers/index';
+import { AlertModule } from '@components/alert/alert.module';
 const APP_CONTAINERS = [InitLayoutComponent]
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlertComponent,
-    ...APP_CONTAINERS
+    ...APP_CONTAINERS,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AlertModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

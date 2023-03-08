@@ -23,7 +23,7 @@
             <input type="password" formControlName="password" class="input input-bordered" [ngClass]="{ 'input-error': submitted && f['password'].errors }">
           </div><!-- /.form-control w-full max-w-xs -->
           <div class="invalid-feedback text-red-400 text-xs" *ngIf="submitted && f['password'].errors">
-            <div *ngIf="f['password'].errors['required']">Password is required</div><!-- / -->
+            <div *ngIf="f['password'].errors['required']">Password is required</div>
           </div><!-- /.invalid-feedback text-red-400 text-xs -->
         </div><!-- /.w-full mb-4 -->
         <div class="w-full">
