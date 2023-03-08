@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  body {
+    @apply bg-[#f8f9fa] text-[#212529];
+  }
+
+  #app__container {
+    @apply flex min-h-screen flex-col;
+  }
+
+  .page-content {
+    @apply py-8 px-3 flex-grow;
+    min-height: calc(100vh - 110px);
+  }
+
+  .form-signin {
+    @apply max-w-[450px];
+  }
+
+  .footer {
+    @apply py-4 px-7 border-t-[1px] border-t-[#e8ebf1] text-sm mt-auto;
+  }
+}

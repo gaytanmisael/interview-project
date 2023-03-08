@@ -37,4 +37,12 @@ export class AccountService {
     this.userSubject.next(null);
     this.router.navigate(['/login']);
   }
+
+  register(user: User) {
+    return this.http.post(`https://localhost:4200/users/register`, user);
+  }
+
+  getById(id: string) {
+    return this.http.get<User>(`https://localhost:4200/users/${id}`);
+  }
 }

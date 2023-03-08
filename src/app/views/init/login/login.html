@@ -1,0 +1,38 @@
+<div class="card bg-white shadow-xl mb-4">
+  <div class="card-body">
+    <div class="auth-form-wrapper px-4 py-5">
+      <h1 class="card-title font-bold text-4xl mb-4">Welcome Back!</h1>
+      <h5 class="mb-4 font-bold text-xl">Log in to your account.</h5><!-- /.mb-4 -->
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="w-full mb-4">
+          <div class="form-control w-full max-w-xs">
+            <label class="label">
+              <span class="label-text">Username</span><!-- /.label-text -->
+            </label><!-- /.label -->
+            <input type="text" formControlName="username" class="input input-bordered" [ngClass]="{ 'input-error': submitted && f['username'].errors }">
+          </div><!-- /.form-control w-full max-w-xs -->
+          <div class="invalid-feedback text-red-400 text-xs" *ngIf="submitted && f['username'].errors">
+            <div *ngIf="f['username'].errors['required']!">Username is required</div>
+          </div><!-- /.invalid-feedback -->
+        </div><!-- /.w-full mb-4 -->
+        <div class="w-full mb-4">
+          <div class="form-control w-full max-w-xs">
+            <label class="label">
+              <span class="label-text">Password</span><!-- /.label-text -->
+            </label>
+            <input type="password" formControlName="password" class="input input-bordered" [ngClass]="{ 'input-error': submitted && f['password'].errors }">
+          </div><!-- /.form-control w-full max-w-xs -->
+          <div class="invalid-feedback text-red-400 text-xs" *ngIf="submitted && f['password'].errors">
+            <div *ngIf="f['password'].errors['required']">Password is required</div><!-- / -->
+          </div><!-- /.invalid-feedback text-red-400 text-xs -->
+        </div><!-- /.w-full mb-4 -->
+        <div class="w-full">
+          <button [disabled]="loading" class="btn">
+            Login
+          </button>
+          <a routerLink="/register" class="btn btn-link">Register</a>
+        </div><!-- /.w-full -->
+      </form>
+    </div><!-- /.auth-form-wrapper px-4 py-5 -->
+  </div><!-- /.card-body -->
+</div><!-- /.card mb-4 -->

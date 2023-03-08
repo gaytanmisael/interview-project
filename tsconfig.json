@@ -22,12 +22,21 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths":{
+      "@components/*": ["src/app/components/*"],
+      "@containers/*": ["src/app/containers/*"],
+      "@guards/*": ["src/app/shared/guard/*"],
+      "@interceptor/*": ["src/app/shared/interceptor/*"],
+      "@interfaces/*": ["src/app/shared/interface/*"],
+      "@services/*": ["src/app/shared/services/*"],
+      "@views/*": ["src/app/views/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
   }
 }
