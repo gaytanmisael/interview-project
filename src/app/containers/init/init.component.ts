@@ -10,5 +10,5 @@ export class InitLayoutComponent {
 
   constructor(public _router: Router) {}
 
-  ngOnInig() {}
+  ngOnInit() {}
 }

@@ -24,6 +24,7 @@
       "dom"
     ],
     "paths":{
+      "@arrays/*": ["src/app/shared/arrays/*"],
       "@components/*": ["src/app/components/*"],
       "@containers/*": ["src/app/containers/*"],
       "@guards/*": ["src/app/shared/guard/*"],

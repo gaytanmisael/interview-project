@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
+import { Title } from "@angular/platform-browser";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs";
 
@@ -19,12 +20,14 @@ export class RegisterComponent implements OnInit {
   submitted = false;
 
   constructor(
+    public _title: Title,
     private _fb: FormBuilder,
     private _ar: ActivatedRoute,
     private _router: Router,
     private _account: AccountService,
     private _alert: AlertService
   ) {
+    this._title.setTitle('Register');
     this.form = this._fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],

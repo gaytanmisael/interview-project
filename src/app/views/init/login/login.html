@@ -5,18 +5,18 @@
       <h5 class="mb-4 font-bold text-xl">Log in to your account.</h5><!-- /.mb-4 -->
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="w-full mb-4">
-          <div class="form-control w-full max-w-xs">
+          <div class="form-control w-full">
             <label class="label">
               <span class="label-text">Username</span><!-- /.label-text -->
             </label><!-- /.label -->
-            <input type="text" formControlName="username" class="input input-bordered" [ngClass]="{ 'input-error': submitted && f['username'].errors }">
+            <input type="text" formControlName="username" class="input input-bordered w-full" [ngClass]="{ 'input-error': submitted && f['username'].errors }">
           </div><!-- /.form-control w-full max-w-xs -->
           <div class="invalid-feedback text-red-400 text-xs" *ngIf="submitted && f['username'].errors">
             <div *ngIf="f['username'].errors['required']!">Username is required</div>
           </div><!-- /.invalid-feedback -->
         </div><!-- /.w-full mb-4 -->
         <div class="w-full mb-4">
-          <div class="form-control w-full max-w-xs">
+          <div class="form-control w-full">
             <label class="label">
               <span class="label-text">Password</span><!-- /.label-text -->
             </label>
@@ -27,12 +27,15 @@
           </div><!-- /.invalid-feedback text-red-400 text-xs -->
         </div><!-- /.w-full mb-4 -->
         <div class="w-full">
-          <button [disabled]="loading" class="btn">
+          <button [disabled]="loading" class="btn btn-block" [ngClass]="{ 'loading': loading }">
             Login
           </button>
-          <a routerLink="/register" class="btn btn-link">Register</a>
         </div><!-- /.w-full -->
       </form>
     </div><!-- /.auth-form-wrapper px-4 py-5 -->
   </div><!-- /.card-body -->
 </div><!-- /.card mb-4 -->
+
+<div class="text-center">
+  <a routerLink="/register" class="link">Register</a>
+</div><!-- /.text-center -->

@@ -11,9 +11,9 @@ import { ErrorInterceptor } from '@interceptor/error.interceptor';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 
-import { InitLayoutComponent } from '@containers/index';
+import { InitLayoutComponent, DefaultComponent } from '@containers/index';
 import { AlertModule } from '@components/alert/alert.module';
-const APP_CONTAINERS = [InitLayoutComponent]
+const APP_CONTAINERS = [InitLayoutComponent, DefaultComponent]
 
 @NgModule({
   declarations: [

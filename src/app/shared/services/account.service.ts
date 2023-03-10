@@ -24,7 +24,7 @@ export class AccountService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<User>(``, { username, password }).pipe(map(user => {
+    return this.http.post<User>(`https://localhost:4200/users/authenticate`, { username, password }).pipe(map(user => {
       localStorage.setItem('user', JSON.stringify(user));
       this.userSubject.next(user);
       return user;

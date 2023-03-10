@@ -1,0 +1,83 @@
+    <div class="w-full bg-white shadow-lg border border-gray-200">
+      <header class="px-5 py-4 border-b border-gray-100 flex justify-between items-center">
+        <div class="font-semibold text-gray-800">Manage Cart</div><!-- /.font-semibold text-gray-800 -->
+        <button role="button" class="btn btn-ghost" title="Add New Product" (click)="addNewLine()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-5 h-5">
+            <rect width="256" height="256" fill="none"/>
+            <line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+            <line x1="128" y1="40" x2="128" y2="216" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+          </svg>
+        </button>
+      </header><!-- /.px-5 py-4 -->
+      <div class="overflow-x-auto p-3">
+        <form [formGroup]="products" (ngSubmit)="onSubmit()">
+        <table class="table-auto w-full">
+          <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+            <tr>
+              <th class="p-2">
+                <div class="font-semibold text-left">Product Name</div><!-- /.font-semibold text-left -->
+              </th>
+              <th class="p-2">
+                <div class="font-semibold text-left">Quantity</div><!-- /.font-semibold text-left -->
+              </th>
+              <th class="p-2">
+                <div class="font-semibold text-left">Tax</div><!-- /.font-semibold text-left -->
+              </th>
+              <th class="p-2">
+                <div class="font-semibold text-left">Unit Price</div><!-- /.font-semibold text-left -->
+              </th><!-- /.p-2 -->
+              <th class="p-2">
+                <div class="font-semibold text-left">Line Total</div><!-- /.font-semibold text-left -->
+              </th><!-- /.p-2 -->
+              <th class="p-2">
+                <div class="font-semibold text-center">Action</div><!-- /.font-semibold text-center -->
+              </th><!-- /.p-2 -->
+            </tr>
+          </thead>
+          <tbody class="text-sm divide-y divide-gray-100" formArrayName="items">
+            <tr *ngFor="let item of lineItems().controls; let itemIndex = index; let first = first; let last = last;">
+              <td class="p-2">
+                <input type="text" name="" id="" class="input input-bordered font-medium">
+              </td>
+              <td class="p-2">
+                <input type="number" name="" class="input input-bordered">
+              </td><!-- /.p-2 -->
+              <td class="p-2">
+                <select name="" class="select select-bordered">
+                  <option *ngFor="let tax of taxes" value={tax.rate}>{{ tax.name }}</option>
+                </select><!-- /# -->
+              </td><!-- /.p-2 -->
+              <td class="p-2">
+                <input type="text" name="" id="" class="input input-bordered w-[100px] font-medium">
+              </td><!-- /.p-2 -->
+              <td class="p-2">
+                <input type="text" formControlName="line_amount" id="" class="input input-bordered" readonly>
+                <div class="text-left font-medium text-green-500">
+                  $2,890.66
+                </div>
+              </td>
+              <td class="p-2">
+                <div class="flex justify-center">
+                  <button (click)="removeLine(itemIndex)">
+                    <svg class="w-8 h-8 hover:text-blue-600 rounded-full hover:bg-gray-100 p-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table><!-- /.table-auto w-full -->
+        </form>
+      </div><!-- /.overflow-x-auto p-3 -->
+
+      <div class="flex justify-between font-bold space-x-4 text-2xl border-t border-gray-100 px-5 py-4">
+        <div>
+          <button class="btn btn-outline">Add New Tax</button><!-- /.btn btn-outline -->
+        </div>
+        <div class="flex gap-2">
+          <div>Total</div>
+          <div class="text-blue-600">$<span>2,890</span></div>
+        </div>
+      </div><!-- /.flex justify-end font-bold space-x-4 text-2xl border-t border-gray-100 px-5 py-4 -->
+    </div><!-- /.w-full -->

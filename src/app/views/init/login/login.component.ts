@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Title } from '@angular/platform-browser'
 import { Router, ActivatedRoute } from '@angular/router'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { first } from 'rxjs'
@@ -20,12 +21,14 @@ export class LoginComponent implements OnInit {
   submitted = false;
 
   constructor(
+    public _title: Title,
     private _fb: FormBuilder,
     private _ar: ActivatedRoute,
     private _router: Router,
     private _account: AccountService,
     private _alert: AlertService
   ) {
+    this._title.setTitle('Login')
     this.form = this._fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -47,7 +50,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this._account.login(this.f['username'].value, this.f['password'].value).pipe(first()).subscribe({
       next: () => {
-        const returnUrl = this._ar.snapshot.queryParams['returnUrl'] || '/';
+        const returnUrl = this._ar.snapshot.queryParams['returnUrl'] || '/products';
         this._router.navigateByUrl(returnUrl);
       },
       error: error => {

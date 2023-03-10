@@ -4,23 +4,65 @@
       <h1 class="card-title font-bold text-4xl mb-4">Sign Up</h1><!-- /.card-title font-bold text-4xl mb-4 -->
       <h5 class="mb-4 font-bold text-xl">Create a free account</h5><!-- /.mb-4 font-bold text-xl -->
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div class="w-full">
-          <div class="flex flex-col md:flex-row md:gap-8">
-            <div class="w-full md:w-1/2 mb-4">
-              <div class="form-control w-full max-w-xs">
-                <label class="label">
-                  <span class="label-text">First Name</span><!-- /.label-text -->
-                </label><!-- /.label -->
-                <input type="text" formControlName="firstName" class="input input-bordered" [ngClass]="{ 'input-error': submitted && f['firstName'].errors }">
-              </div><!-- /.form-control w-full max-w-xs -->
-              <div class="invalid-feedback text-red-400 text-xs" *ngIf="submitted && f['firstName'].errors">
-                <div *ngIf="f['firstName'].errors['required']">First Name is required</div>
-              </div><!-- /.invalid-feedback -->
-            </div><!-- /.w-full -->
-            <div class="w-full md:w-1/2 mb-4"></div><!-- /.w-full -->
-          </div><!-- /.flex flex-col md:flex-row md:gap-8 -->
-        </div><!-- /.w-full -->
+        <div class="w-full grid grid-cols md:grid-cols-2 place-items-center gap-4">
+
+          <div class="w-full mb-4">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">First Name</span><!-- /.label-text -->
+              </label><!-- /.label -->
+              <input type="text" formControlName="firstName" class="input input-bordered" [ngClass]="{ 'input-error': submitted && f['firstName'].errors }">
+            </div><!-- /.form-control w-full max-w-xs -->
+            <div class="invalid-feedback text-red-400 text-xs" *ngIf="submitted && f['firstName'].errors">
+              <div *ngIf="f['firstName'].errors['required']">First Name is required</div>
+            </div><!-- /.invalid-feedback -->
+          </div><!-- /.w-full -->
+
+          <div class="w-full mb-4">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Last Name</span><!-- /.label-text -->
+              </label><!-- /.label -->
+              <input type="text" formControlName="lastName" class="input input-bordered" [ngClass]="{ 'input-error': submitted && f['lastName'].errors }">
+            </div><!-- /.form-control w-full max-w-xs -->
+            <div class="invalid-feedback text-red-400 text-xs" *ngIf="submitted && f['lastName'].errors">
+              <div *ngIf="f['lastName'].errors['required']">First Name is required</div>
+            </div><!-- /.invalid-feedback -->
+          </div><!-- /.w-full -->
+        </div><!-- /.grid grid-cols md:grid-cols-2 place-items-center -->
+
+        <div class="w-full mb-4">
+          <div class="form-control w-full">
+            <label class="label">
+              <span class="label-text">Username</span><!-- /.label-text -->
+            </label><!-- /.label -->
+            <input type="text" formControlName="username" class="input input-bordered" [ngClass]="{ 'input-error': submitted && f['username'].errors }">
+            <div class="invalid-feedback text-red-400 text-xs" *ngIf="submitted && f['username'].errors">
+              <div *ngIf="f['username'].errors['required']">Username is required</div>
+            </div><!-- /.invalid-feedback text-red-400 text-xs -->
+          </div><!-- /.form-control w-full -->
+        </div><!-- /.w-full mb-4 -->
+
+        <div class="w-full mb-4">
+          <div class="form-control w-full">
+            <label class="label">
+              <span class="label-text">Password</span><!-- /.label-text -->
+            </label><!-- /.label -->
+            <input type="password" formControlName="password" class="input input-bordered" [ngClass]="{ 'input-error': submitted && f['password'].errors }">
+            <div class="invalid-feedback text-red-400 text-xs" *ngIf="submitted && f['password'].errors">
+              <div *ngIf="f['password'].errors['required']">Password is required</div>
+              <div *ngIf="f['password'].errors['minlength']">Password must be at least 6 characters</div>
+            </div><!-- /.invalid-feedback text-red-400 text-xs -->
+          </div><!-- /.form-control w-full -->
+        </div><!-- /.w-full mb-4 -->
+        <div class="w-full mb-4">
+          <button [disabled]="loading" class="btn btn-block" [ngClass]="{ 'loading': loading }">Register</button><!-- /.btn btn-block -->
+        </div><!-- /.w-full mb-4 -->
       </form>
     </div><!-- /.auth-form-wrapper px-4 py-5 -->
   </div><!-- /.card-body -->
 </div><!-- /.card bg-white shadow-xl mb-4 -->
+
+<div class="text-center">
+  <a routerLink="/login" class="link">Cancel</a>
+</div><!-- /.text-center -->
