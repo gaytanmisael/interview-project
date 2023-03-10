@@ -1,14 +1,14 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule, Router } from '@angular/router';
 
-import { DashComponent } from "./dash.component";
+import { ProductsComponent } from "./products.component";
 
 const routes = [
-  { path: '', component: DashComponent }
+  { path: '', component: ProductsComponent }
 ] satisfies Routes;
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashRouting {}
+export class ProductsRouting {}

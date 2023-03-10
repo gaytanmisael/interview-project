@@ -1,19 +1,16 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Title } from "@angular/platform-browser";
-import { BehaviorSubject, Observable } from "rxjs";
 
-import { Tax } from "@interfaces/tax";
-import { Taxes } from "@arrays/taxes";
-import { Products } from "@arrays/products";
 
 @Component({
-  selector: 'dash',
-  templateUrl: './dash.html'
+  selector: 'products',
+  templateUrl: './products.html'
 })
-export class DashComponent implements OnInit {
+export class ProductsComponent implements OnInit {
   products: FormGroup;
-  taxes = Taxes;
+  taxes = JSON.parse(localStorage.getItem('taxes')!);
+
   constructor(
     public _title: Title,
     private _fb: FormBuilder
@@ -34,8 +31,9 @@ export class DashComponent implements OnInit {
     return this._fb.group({
       name: [''],
       quantity: [''],
+      tax_rate: ['', [Validators.required]],
       unit_price: [''],
-      line_amount: ['']
+      line_amount: ['', [Validators.required]]
     });
   }
 
@@ -49,5 +47,18 @@ export class DashComponent implements OnInit {
 
   removeLine(index: number) {
     this.lineItems().removeAt(index);
+  }
+
+  updateLineAmount(index: number, taxTrigger: boolean = false) {
+    const current = this.lineItems().at(index);
+    let unit_price = current.get('unit_price')?.value;
+    let qty = current.get('quantity')?.value;
+    let tax_rate = current.get('tax_rate')?.value;
+
+    const line_amount = qty * unit_price + ((unit_price * tax_rate) * qty);
+
+    current.patchValue({
+      line_amount: line_amount.toLocaleString('en-us', { style: 'currency', currency: 'USD' })
+    })
   }
 }

@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { InitLayoutComponent } from '@containers/init';
 import { AuthGuard } from '@guards/auth.guard';
+import { UnAuthGuard } from '@guards/unauth.guard';
 import { DefaultComponent } from './containers';
 
 const loginModule = () => import('@views/init/login/login.module').then(m => m.LoginModule);
 const registerModule = () => import('@views/init/register/register.module').then(m => m.RegisterModule);
-const DashModule = () => import('@views/dash/dash.module').then(m => m.DashModule);
+const ProductsModule = () => import('@views/dash/products/products.module').then(m => m.ProductsModule);
+const TaxesModule = () => import('@views/dash/taxes/taxes.module').then(m => m.TaxesModule);
 
 const routes: Routes = [
   {
@@ -16,12 +18,13 @@ const routes: Routes = [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', loadChildren: loginModule },
       { path: 'register', loadChildren: registerModule },
-    ]
+    ],
   },
   {
-    path: 'products', component: DefaultComponent,
+    path: '', component: DefaultComponent,
     children: [
-      { path: '', loadChildren: DashModule }
+      { path: 'products', loadChildren: ProductsModule },
+      { path: 'taxes', loadChildren: TaxesModule },
     ],
     canActivate: [AuthGuard]
   },
